@@ -24,7 +24,7 @@ body {background-color: #2F4F4F; color: #FFFFF0}
 		if (isset($_POST['enviar'])){
 
 			if (in_array(NULL, $_POST)) { //troquei os if e else de cada campo do formulário, para a função in_array, que já faz uma mensagem padrão caso algum campo estiver vazio
-				?>
+		?>
 				<div class="alert alert-primary text-center" role="alert">
 					Algum campo está vazio, volte e preencha novamente.
 				</div>
@@ -32,37 +32,64 @@ body {background-color: #2F4F4F; color: #FFFFF0}
 					<a href="./">Voltar</a>
 				</p>
 
-				<?php
+		<?php
 			}else{
-				?>
+		?>
+
+					<?php 
+						require_once("gravar.php"); 
+					?>
 
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
+							<th scope="col">ID</th>
 							<th scope="col">Nome</th>
 							<th scope="col">E-mail</th>
 							<th scope="col">Mensagem</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td><?php echo $_POST['nome']?></td>
-							<td><?php echo $_POST['email']?></td>
-							<td><pre><?php echo $_POST['mensagem']?></pre>
-							</td>
-						</tbody>
+
+<?php 
+
+    if( file_exists( "dados.txt" ) ) {
+        
+        $fp = fopen( "dados.txt", "r"); // o "r" significa leitura.
+
+        while( !feof( $fp ) ) { //Enquanto não chegar ao final do arquivo declarado na variavel $fp
+            $linha_atual = fgets( $fp );
+            if( !empty( $linha_atual )){ //Esse if serve para não imprimir a linha vazia
+                $ex = explode(";",$linha_atual); //função explode cria um array de cada linha com o separador ";"
+                $i = 1; //criei essa variávei para a coluna ID
+
+?>
+
+    <tr>
+		<td><?php echo $i ?> </td>
+        <td><?php echo $ex[0];?></td>
+        <td><?php echo $ex[1];?></td>
+        <td><?php echo $ex[2];?></td>
+    </tr>
+
+<?php
+				$i++;
+            }
+        }
+
+        fclose( $fp );
+
+    }else{
+        echo "Arquivo não existe";
+    }
+?>
 					</table>
 					
-					<?php require_once("gravar.php"); ?>
+
 
 
 					<p>
 						<a href="./">Voltar</a>
 					</p>
-
-
 
 					<?php
 				}
