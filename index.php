@@ -17,6 +17,7 @@
 body {background-color: #2F4F4F; color: #FFFFF0}
 .container {padding-top: 25px}
 .table {color: #FFFFF0}
+a {color: #fff; font-weight:bold;}
 </style>
 
 <body>
@@ -39,49 +40,15 @@ body {background-color: #2F4F4F; color: #FFFFF0}
 		}else{				
 ?>
 
+<div class="alert alert-success" role="alert">
+
 <?php 
 			require_once("gravar.php"); 
 ?>
 
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Nome</th>
-				<th scope="col">E-mail</th>
-				<th scope="col">Mensagem</th>
-			</tr>
-		</thead>
-
-<?php
-
-    $conexao = new mysqli("localhost", "root", "123456", "terminalroot");
-
-    if ( ! $conexao->connect_error ){
-
-        $sql = "SELECT * FROM dados";
-        $resultado = $conexao->query($sql);
-        while ($ex = $resultado->fetch_assoc()){
-
-?>
-
-    <tr>
-		<td><?php echo $ex['id'];?></td>
-        <td><?php echo $ex['nome'];?></td>
-        <td><?php echo $ex['email'];?></td>
-        <td><?php echo $ex['mensagem'];?></td>
-    </tr>
-
-<?php
-
-			};
-	}else{
-		echo "ERRO! Falha ao conectar";
-	}
-?>
+</div>
 
 
-	</table>
 		<p>
 			<a href="./">Voltar</a>
 		</p>
@@ -116,6 +83,52 @@ body {background-color: #2F4F4F; color: #FFFFF0}
 			}
 ?>
 
+<hr>
+
+<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">E-mail</th>
+				<th scope="col">Mensagem</th>
+				<th scope="col">Atualizar</th>
+				<th scope="col">Deletar</th>
+			</tr>
+		</thead>
+
+<?php
+
+    $conexao = new mysqli("localhost", "root", "123456", "terminalroot");
+
+    if ( ! $conexao->connect_error ){
+
+        $sql = "SELECT * FROM dados";
+        $resultado = $conexao->query($sql);
+        while ($ex = $resultado->fetch_assoc()){
+
+?>
+
+    <tr>
+		<td><?php echo $ex['id'];?></td>
+        <td><?php echo $ex['nome'];?></td>
+        <td><?php echo $ex['email'];?></td>
+        <td><?php echo $ex['mensagem'];?></td>
+        <td><a href="">↺</a></td>
+		<td><a href="">X</a></td>
+		
+	</tr>
+
+<?php
+
+			};
+	}else{
+		echo "ERRO! Falha ao conectar";
+	}
+?>
+
+
+	</table>
 		</div>
 	</body>
 </html>
