@@ -1,3 +1,13 @@
+<?php
+	if( isset( $_GET ) && ! empty( $_GET ) ){
+		if( isset( $_GET['deletar'] ) ){
+			echo "Delete a linha: " . $_GET['deletar'];
+		}else{
+			echo "Atualize a linha: " . $_GET['atualizar'];
+		}
+	}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +27,7 @@
 body {background-color: #2F4F4F; color: #FFFFF0}
 .container {padding-top: 25px}
 .table {color: #FFFFF0}
-a {color: #fff; font-weight:bold;}
+a {color: #fff; font-weight:bold;	}
 </style>
 
 <body>
@@ -40,13 +50,9 @@ a {color: #fff; font-weight:bold;}
 		}else{				
 ?>
 
-<div class="alert alert-success" role="alert">
-
-<?php 
-			require_once("gravar.php"); 
-?>
-
-</div>
+	<div class="alert alert-success" role="alert">
+		<?php require_once("gravar.php"); ?>
+	</div>
 
 
 		<p>
@@ -114,8 +120,8 @@ a {color: #fff; font-weight:bold;}
         <td><?php echo $ex['nome'];?></td>
         <td><?php echo $ex['email'];?></td>
         <td><?php echo $ex['mensagem'];?></td>
-        <td><a href="">↺</a></td>
-		<td><a href="">X</a></td>
+        <td><a href="?atualizar=<?php echo $ex['id'];?>">↺</a></td>
+		<td><a href="?deletar=<?php echo $ex['id'];?>">X</a></td>
 		
 	</tr>
 
