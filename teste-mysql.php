@@ -21,5 +21,34 @@
     }else{
         echo "ERRO! Falha ao conectar";
     }
+    
+?>
 
+
+
+<?php
+	if( isset( $_GET ) && ! empty( $_GET ) ){
+		if( isset( $_GET['deletar'] ) ){	
+			$del = $_GET['deletar'];
+			
+			$conexao = new mysqli("localhost", "root", "123456", "terminalroot");
+
+			if ( ! $conexao->connect_error ){
+		
+				$sql = "DELETE FROM dados WHERE id= '$del' ";
+					if ($conexao->query($sql) === TRUE ){
+					echo $del . "excluído com sucesso";
+					}else{
+					echo "Falha ao inserir dados";
+					}
+
+			}
+		}else{
+				echo "ERRO! Falha ao conectar no banco de dados";
+			}
+
+	}else{
+			echo "Atualize a linha: " . $_GET['atualizar'];
+		}	
+	
 ?>
