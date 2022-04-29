@@ -8,17 +8,45 @@
 		
 				$sql = "DELETE FROM dados WHERE id= '$del' ";
 					if ($conexao->query($sql) === TRUE ){
-					echo "ID: $del excluído com sucesso";
-					header("location: ./");
+						echo "ID: $del excluído com sucesso";
+						header("location: ./");
 					}else{
-					echo "Falha ao inserir dados";
+						echo "Falha ao deletar dados";
 					}
 		}else{
 				echo "ERRO! Falha ao conectar no banco de dados";
 			}
 
 		}else{
-			echo "Atualize a linha: " . $_GET['atualizar'];
+			require_once("head.php");
+			$a = $_GET['atualizar'];
+
+			$conexao = new mysqli("localhost", "root", "123456", "terminalroot");
+
+			$sql = "SELECT * FROM dados WHERE id=$a";
+
+			$r = $conexao->query( $sql );
+
+			$ar = $r->fetch_assoc();
+
+			require_once("atualizar.php");
+
+			if( isset($_GET['update'])){
+				$nome = $_POST['nome'];
+				$email = $_POST['email'];
+				$mensagem = $_POST['mensagem'];
+				$sql = "UPDATE dados SET nome='$nome', email='$email', mensagem='$mensagem' WHERE id='$a'";
+				if( $conexao->query($sql) === TRUE){
+					header("location: ./");
+
+				}else{
+					echo "Falha ao atualizar";
+				}
+			}
+
+			echo "\n</div>\n</body>\n</html>"; // Esse echo serve para o código html não ficar quebrado(faltando tags, devido ao exit da linha abaixo)
+			$conexao->close();
+			exit; //Coloque o exit para não duplicar o formulário
 		}
 	}
 

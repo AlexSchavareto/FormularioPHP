@@ -4,7 +4,8 @@
     if ( ! $conexao->connect_error ){
         $sql = "INSERT INTO dados (id, nome, email, mensagem, data) VALUES (NULL, '{$_POST['nome']}', '{$_POST['email']}', '{$_POST['mensagem']}', NOW())";
         if( $conexao-> query($sql) === TRUE){
-            echo "Dados inseridos";
+            //echo "Dados inseridos";
+            header("location: ./");
         }else{
             echo "Falha ao inserir dados";
         }
