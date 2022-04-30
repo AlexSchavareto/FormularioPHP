@@ -1,4 +1,21 @@
 <?php
+
+session_start();
+
+if( isset($_GET['deslogar'] ) ){
+	unset($_SESSION);
+	session_destroy();
+	header('login.php');
+}
+
+if( !isset( $_SESSION['meu-site'] ) ){
+	header("location: login.php");
+}
+
+echo "Você está logado com o usuário: " . $_SESSION['meu-site'];
+echo "<br>";
+echo "<a href='?deslogar'>Deslogar></a>";
+
 	if( isset( $_GET ) && ! empty( $_GET ) ){
 		if( isset( $_GET['deletar'] ) ){
 			//echo "Delete a linha: " . $_GET['deletar'];
