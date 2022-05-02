@@ -15,7 +15,7 @@ if( isset($_POST['logar'])){
         $_SESSION['meu-site'] = "$user";
         header('location: ./');
     }else{
-        echo "Falha ao logar";
+        echo "Falha ao logar - Usuário / Senha incorreto";
     }
 
 

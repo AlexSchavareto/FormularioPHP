@@ -15,5 +15,6 @@
 				<pre><textarea type="text" name="mensagem" class="form-control"><?php echo $ar['mensagem']; ?></textarea></pre>
 			</div>
 
-			<button type="submit" name="atualizar" class="btn btn-primary" value="atualizar">Enviar</button>
-		</form>
+			<button type="submit" name="atualizar" class="btn btn-primary" value="atualizar">Atualizar</button>  
+			<a href="./">Voltar</a>	
+			</form>
