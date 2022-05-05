@@ -2,29 +2,30 @@
 
 //Testando classes com public - private e protected
 
-//private = Somente irá funcionar caso esteja na mesma classe.
-
-//protected = Funcionará caso a classe tiver estendida 
-
 class Teste{
-    protected $nome = "Alex";
-    public $sobrenome = "Schavareto";
-    function mostrar_nome(){
-        echo $this->nome;
+    private $nome = "Alex";
+    private $sobrenome = "Schavareto";
 
+    static function mostrar_nome(){ //static não precisa do $this
+        echo $nome = "Novo nome " . $sobrenome = "Novo sobrenome";
+    }
+
+    function nome_verdadeiro(){
+        echo $this->nome . $this->sobrenome;
     }
 }
 
 class Outra extends Teste{
     function sobrenome(){
-        echo $this->sobrenome;
-        echo $this->nome;
+        Outra::mostrar_nome();   
     }
 }
 
 $a = new Outra;
-$a -> mostrar_nome();
-$a -> sobrenome();
+$a -> nome_verdadeiro();
 
+echo "<hr>";
+
+Outra::sobrenome();
 
 ?>
