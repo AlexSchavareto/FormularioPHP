@@ -14,7 +14,7 @@ if( !isset( $_SESSION['meu-site'] ) ){
 
 echo "Você está logado com o usuário: " . $_SESSION['meu-site'];
 echo "<br>";
-echo "<a href='?deslogar'>Deslogar></a>";
+echo "<a href='?deslogar'>Deslogar</a>";
 
 	if( isset( $_GET ) && ! empty( $_GET ) ){
 		if( isset( $_GET['deletar'] ) ){
