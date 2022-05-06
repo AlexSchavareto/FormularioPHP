@@ -169,6 +169,6 @@ echo "<a href='?deslogar'>Deslogar</a>";
 
 
 	</table>
-		</div>
+	</div>
 	</body>
 </html>

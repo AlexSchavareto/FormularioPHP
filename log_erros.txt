@@ -1,0 +1,7 @@
+mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:10
+Stack trace:
+#0 /var/www/html/teste.php(10): mysqli->__construct()
+#1 {main}mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:12
+Stack trace:
+#0 /var/www/html/teste.php(12): mysqli->__construct()
+#1 {main}
