@@ -1,7 +1,10 @@
-mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:10
+PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:4
 Stack trace:
-#0 /var/www/html/teste.php(10): mysqli->__construct()
-#1 {main}mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:12
+#0 /var/www/html/teste.php(4): PDO->__construct()
+#1 {main}PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:4
 Stack trace:
-#0 /var/www/html/teste.php(12): mysqli->__construct()
+#0 /var/www/html/teste.php(4): PDO->__construct()
+#1 {main}PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) in /var/www/html/teste.php:4
+Stack trace:
+#0 /var/www/html/teste.php(4): PDO->__construct()
 #1 {main}

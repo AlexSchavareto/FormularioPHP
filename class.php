@@ -18,9 +18,6 @@
     $t = $var->somar( 10, 15 );
     echo $t;
 
-
-
-
 ?>
 </div>
 </body>

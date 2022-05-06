@@ -1,7 +1,22 @@
 <?php
 
-// Introduzinho try e catch
+try{
+    $conexao = new PDO("mysql:host=localhost;dbname=terminalroot", "root", "123456");
+    echo "Conectado com sucesso!";
+    
+}catch( PDOException $erros){
+    $fb = fopen( "log_erros.txt", "a+");
+    fwrite( $fb, "$erros");
+    fclose ( $fb );
+    die ( "Não conectado!");
+    
+}
 
+
+//######################################################################
+
+// Utilizando try, catch e die
+/* 
 mysqli_report( MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL);
 
 $host = "localhost";
@@ -19,18 +34,11 @@ try {
     die( "Não conectado!");
 
 }
-
-
-
-
-
-
-
-
-
+*/
+//############################################################################
 
 //Testando classes com public, private e protected
-/* ############################################################################
+/*
 
 class Teste{
     public $nome;
@@ -48,6 +56,4 @@ class Outra extends Teste{
 
 Outra::set_nome();
 */
-
-
 ?>
