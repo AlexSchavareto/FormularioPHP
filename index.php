@@ -6,9 +6,9 @@
 
     if ( isset( $_POST['enviar'])){
         if ( $obj->insert( $_POST ) ){
-            echo "Dados inserido com sucesso!";
+            $s = "Dados inserido com sucesso!";
         }else{
-            echo "Falha ao inserir dados";
+            $s = "Falha ao inserir dados";
         }
     }
 ?>
@@ -55,6 +55,19 @@
 
 	<button type="submit" name="enviar" class="btn btn-primary" value="enviar">Enviar</button>
 </form>
+
+<?php if ( isset( $s ) ){ ?>
+
+  <div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+  </div>
+<?php
+
+}else{?>
+  <div class="alert alert-primary" role="alert">
+  Preencha seus dados!
+  </div>
+<?php } ?>
 
 <table class="table table-bordered">
   <thead>
