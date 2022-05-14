@@ -16,7 +16,7 @@
   }
 
   if( isset( $_GET['atualizar']) ){
-    header( "/inclues/update.php?atualizar=" . $_GET['atualizar'] );
+    require_once( "includes/update.php");
 
   }
 
@@ -108,4 +108,4 @@
 
   </tbody>
 </table>
-    <?php include_once ( "/includes/footer.php"); ?>
+    <?php include_once ( "includes/footer.php"); ?>
