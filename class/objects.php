@@ -16,14 +16,28 @@
         }
 
         function insert( Array $post ){
+
+            unset( $_POST['enviar']);
+
+            if( in_array(FALSE, $post ) ){
+                return FALSE;
+                exit;
+            }
             extract( $post ); //essa função vai extrair todos os array de $_POST no momento que preencher o formulário.
             $sql = "INSERT INTO `dados` SET `nome`=? , `email`=? , `senha`=? , `mensagem`=? , `data`=NOW()"; //Protegendo com acentuação devido ao PDO.
             $query = self::conn()->prepare( $sql ); 
             $query->execute( array( $nome, $email, $senha, $mensagem) ); // Essas variáveis foram criadas no extract()
-            if ( $query->rowCount() == 1) {
-                return TRUE;
-            }else{ 
-                return FALSE;
-        }
+            return ( $query->rowCount() == 1) ? TRUE : FALSE; 
+    }
+
+    function update( $id ){
+        extract( $post );
+            $sql = "UPDATE `dados` SET `nome`=? , `email`=? , `senha`=? , `mensagem`=? , `data`=NOW()"; 
+            exit;
+
+            $query = self::conn()->prepare( $sql ); 
+            $query->execute( array( $nome, $email, $senha, $mensagem) );
+            return ( $query->rowCount() == 1) ? TRUE : FALSE;
+        
     }
 }
